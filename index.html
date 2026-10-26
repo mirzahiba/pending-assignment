@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mirza Tech Nova - Premium Gadget Showcase</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f4ff',
+                            100: '#e0e8ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        },
+                        accent: {
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .glow-effect {
+            box-shadow: 0 0 25px -5px rgba(59, 130, 246, 0.3);
+        }
+        .glow-effect:hover {
+            box-shadow: 0 0 35px 0px rgba(59, 130, 246, 0.5);
+        }
+        /* Glassmorphism style */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.85);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen transition-colors duration-300">
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center text-white font-black text-xl shadow-md">
+                    M
+                </div>
+                <div>
+                    <span class="text-xl font-extrabold bg-gradient-to-r from-blue-600 via-indigo-500 to-cyan-500 bg-clip-text text-transparent">MIRZA TECH NOVA</span>
+                    <span class="block text-[10px] uppercase tracking-widest font-semibold text-slate-400 -mt-1">Next-Gen Electronics</span>
+                </div>
+            </div>
+
+            <!-- Controls (Theme Toggle & Cart Summary) -->
+            <div class="flex items-center space-x-4">
+                <!-- Theme Switcher -->
+                <button id="themeToggleBtn" onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-cyan-400 transition-all duration-200">
+                    <i id="themeIcon" class="fa-solid fa-moon text-lg"></i>
+                </button>
+
+                <!-- Quick Cart Button -->
+                <button onclick="openCartModal()" class="relative p-2.5 rounded-xl bg-blue-50 dark:bg-slate-800 text-blue-600 dark:text-cyan-400 hover:bg-blue-100 dark:hover:bg-slate-700 transition-all duration-200">
+                    <i class="fa-solid fa-shopping-bag text-lg"></i>
+                    <span id="cartBadge" class="absolute -top-1 -right-1 bg-gradient-to-r from-red-500 to-pink-500 text-white text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-sm">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <!-- Hero Tagline -->
+        <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+            <span class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-100 dark:bg-blue-950/80 text-blue-600 dark:text-cyan-400 inline-block mb-3 border border-blue-200 dark:border-blue-800">
+                <i class="fa-solid fa-bolt mr-1"></i> Featured Product Showcase
+            </span>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
+                Discover <span class="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Mirza Tech Nova</span> Innovations
+            </h1>
+            <p class="mt-3 text-slate-600 dark:text-slate-400 text-sm sm:text-base">
+                Explore our premium collection of ultra-smart gadgets designed for seamless performance and futuristic aesthetics.
+            </p>
+        </div>
+
+        <!-- Product Grid Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Main Featured Interactive Card (Lg: 8 Columns or Standalone Featured) -->
+            <div class="lg:col-span-8 bg-white dark:bg-slate-900 rounded-3xl p-5 sm:p-8 border border-slate-200 dark:border-slate-800 shadow-xl transition-all duration-300">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Left Column: Gallery Section -->
+                    <div class="space-y-4">
+                        <!-- Main Preview Image -->
+                        <div class="relative group aspect-square rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 flex items-center justify-center border border-slate-200/60 dark:border-slate-700/50">
+                            <!-- Discount Badge -->
+                            <div class="absolute top-3 left-3 z-10 flex flex-col gap-1">
+                                <span class="px-3 py-1 rounded-lg bg-red-500 text-white font-bold text-xs shadow-lg uppercase tracking-wider flex items-center gap-1">
+                                    <i class="fa-solid fa-fire text-yellow-300"></i> Save 25%
+                                </span>
+                                <span class="px-2.5 py-0.5 rounded-md bg-slate-900/80 backdrop-blur text-slate-200 text-[10px] font-medium tracking-wide">
+                                    LIMITED STOCK
+                                </span>
+                            </div>
+
+                            <!-- Wishlist Toggle -->
+                            <button onclick="toggleWishlist(this)" class="absolute top-3 right-3 z-10 w-10 h-10 rounded-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md flex items-center justify-center text-slate-400 hover:text-red-500 transition-colors shadow-md">
+                                <i class="fa-solid fa-heart text-lg"></i>
+                            </button>
+
+                            <!-- Product Image -->
+                            <img id="mainProductImage" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" 
+                                 alt="Nova Sound X1 Pro" 
+                                 class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out">
+                            
+                            <!-- Zoom Hover Overlay Indicator -->
+                            <div class="absolute bottom-3 right-3 bg-black/50 backdrop-blur text-white px-2.5 py-1 rounded-lg text-xs pointer-events-none opacity-80">
+                                <i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Interactive View
+                            </div>
+                        </div>
+
+                        <!-- Gallery Thumbnails -->
+                        <div class="grid grid-cols-4 gap-3" id="thumbnailContainer">
+                            <button onclick="changeImage(this, 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop')" 
+                                    class="thumb-btn border-2 border-blue-600 rounded-xl overflow-hidden aspect-square bg-slate-100 dark:bg-slate-800 transition-all">
+                                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=200&auto=format&fit=crop" alt="Thumb 1" class="w-full h-full object-cover">
+                            </button>
+                            <button onclick="changeImage(this, 'https://images.unsplash.com/photo-1484704849700-f032a568e944?q=80&w=800&auto=format&fit=crop')" 
+                                    class="thumb-btn border-2 border-transparent hover:border-slate-300 dark:hover:border-slate-700 rounded-xl overflow-hidden aspect-square bg-slate-100 dark:bg-slate-800 transition-all">
+                                <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?q=80&w=200&auto=format&fit=crop" alt="Thumb 2" class="w-full h-full object-cover">
+                            </button>
+                            <button onclick="changeImage(this, 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=800&auto=format&fit=crop')" 
+                                    class="thumb-btn border-2 border-transparent hover:border-slate-300 dark:hover:border-slate-700 rounded-xl overflow-hidden aspect-square bg-slate-100 dark:bg-slate-800 transition-all">
+                                <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=200&auto=format&fit=crop" alt="Thumb 3" class="w-full h-full object-cover">
+                            </button>
+                            <button onclick="changeImage(this, 'https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=800&auto=format&fit=crop')" 
+                                    class="thumb-btn border-2 border-transparent hover:border-slate-300 dark:hover:border-slate-700 rounded-xl overflow-hidden aspect-square bg-slate-100 dark:bg-slate-800 transition-all">
+                                <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=200&auto=format&fit=crop" alt="Thumb 4" class="w-full h-full object-cover">
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Product Details & Controls -->
+                    <div class="flex flex-col justify-between space-y-5">
+                        <div>
+                            <!-- Brand & Category Header -->
+                            <div class="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-cyan-400 mb-1">
+                                <span>Mirza Tech Nova</span>
+                                <span class="text-emerald-500 dark:text-emerald-400 font-bold flex items-center gap-1">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> In Stock
+                                </span>
+                            </div>
+
+                            <!-- Product Title -->
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white leading-tight">
+                                Nova Sound X1 Pro Wireless ANC Headphones
+                            </h2>
+
+                            <!-- Star Rating -->
+                            <div class="flex items-center space-x-2 mt-2">
+                                <div class="flex text-amber-400 text-sm">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star-half-stroke"></i>
+                                </div>
+                                <span class="text-xs font-bold text-slate-700 dark:text-slate-300">4.8</span>
+                                <span class="text-xs text-slate-400">(248 Customer Reviews)</span>
+                            </div>
+
+                            <!-- Pricing Display -->
+                            <div class="mt-4 p-3.5 bg-slate-50 dark:bg-slate-800/60 rounded-2xl border border-slate-200/70 dark:border-slate-700/50 flex items-baseline justify-between">
+                                <div>
+                                    <span id="displayPrice" class="text-2xl sm:text-3xl font-black text-blue-600 dark:text-cyan-400">Rs. 14,999</span>
+                                    <span id="originalPrice" class="text-sm text-slate-400 line-through ml-2">Rs. 19,999</span>
+                                </div>
+                                <span class="text-xs font-medium text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-950/60 px-2.5 py-1 rounded-md">
+                                    You save: <span id="savingsText">Rs. 5,000</span>
+                                </span>
+                            </div>
+
+                            <!-- Short Description -->
+                            <p class="mt-4 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                Experience studio-grade acoustic clarity with Hybrid Active Noise Cancellation, 60-hour playback, ultra-low latency gaming mode, and luxury memory foam earcups.
+                            </p>
+
+                            <!-- Color Selector Variant -->
+                            <div class="mt-5">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+                                    Select Edition Color: <span id="colorName" class="text-blue-600 dark:text-cyan-400 font-semibold">Midnight Black</span>
+                                </label>
+                                <div class="flex space-x-3">
+                                    <button onclick="selectColor(this, 'Midnight Black', 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop')" 
+                                            class="color-btn w-8 h-8 rounded-full bg-slate-900 border-2 border-blue-600 ring-2 ring-blue-600/30 transition-all focus:outline-none"></button>
+                                    <button onclick="selectColor(this, 'Silver Metallic', 'https://images.unsplash.com/photo-1583394838336-acd977736f90?q=80&w=800&auto=format&fit=crop')" 
+                                            class="color-btn w-8 h-8 rounded-full bg-slate-300 border-2 border-transparent hover:border-slate-400 transition-all focus:outline-none"></button>
+                                    <button onclick="selectColor(this, 'Cyber Cyan', 'https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=800&auto=format&fit=crop')" 
+                                            class="color-btn w-8 h-8 rounded-full bg-cyan-500 border-2 border-transparent hover:border-cyan-400 transition-all focus:outline-none"></button>
+                                </div>
+                            </div>
+
+                            <!-- Quantity Selector -->
+                            <div class="mt-5">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-2">
+                                    Quantity
+                                </label>
+                                <div class="flex items-center space-x-3">
+                                    <div class="flex items-center border border-slate-300 dark:border-slate-700 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800">
+                                        <button onclick="updateQty(-1)" class="w-10 h-10 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                                            <i class="fa-solid fa-minus text-xs"></i>
+                                        </button>
+                                        <span id="qtyVal" class="w-12 text-center font-extrabold text-sm text-slate-800 dark:text-slate-100">1</span>
+                                        <button onclick="updateQty(1)" class="w-10 h-10 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                                            <i class="fa-solid fa-plus text-xs"></i>
+                                        </button>
+                                    </div>
+                                    <span class="text-xs text-slate-400">Total: <span id="totalItemPrice" class="font-bold text-slate-700 dark:text-slate-200">Rs. 14,999</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Call To Action Buttons -->
+                        <div class="space-y-3 pt-3">
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="addToCart('Nova Sound X1 Pro', 14999)" 
+                                        class="w-full py-3.5 px-4 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-bold text-sm rounded-xl transition duration-200 flex items-center justify-center gap-2 border border-slate-200 dark:border-slate-700">
+                                    <i class="fa-solid fa-cart-plus text-blue-600 dark:text-cyan-400"></i>
+                                    Add To Cart
+                                </button>
+                                <button onclick="quickBuy('Nova Sound X1 Pro', 14999)" 
+                                        class="w-full py-3.5 px-4 bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white font-bold text-sm rounded-xl shadow-lg shadow-blue-500/25 transition duration-200 flex items-center justify-center gap-2">
+                                    <i class="fa-solid fa-bolt"></i>
+                                    Buy Now
+                                </button>
+                            </div>
+                            <!-- Guarantee Features Bar -->
+                            <div class="grid grid-cols-3 gap-2 pt-2 text-center text-[11px] text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-slate-800">
+                                <div class="flex items-center justify-center gap-1">
+                                    <i class="fa-solid fa-truck-fast text-blue-500"></i> Free Express Shipping
+                                </div>
+                                <div class="flex items-center justify-center gap-1">
+                                    <i class="fa-solid fa-shield-halved text-blue-500"></i> 1 Year Warranty
+                                </div>
+                                <div class="flex items-center justify-center gap-1">
+                                    <i class="fa-solid fa-rotate-left text-blue-500"></i> 7 Days Return
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secondary Gadgets Sidebar (Right Column) -->
+            <div class="lg:col-span-4 space-y-6">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <i class="fa-solid fa-fire-flame-curved text-amber-500"></i> Trending Nova Gadgets
+                </h3>
+
+                <!-- Mini Card 1 -->
+                <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-lg transition-all flex gap-4 items-center group">
+                    <div class="w-24 h-24 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 flex-shrink-0 relative">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400&auto=format&fit=crop" 
+                             alt="Smart Watch" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <span class="absolute top-1 left-1 bg-blue-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded">NEW</span>
+                    </div>
+                    <div class="flex-grow">
+                        <span class="text-[10px] font-bold text-blue-600 dark:text-cyan-400 uppercase tracking-wider">Smartwatch</span>
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">Nova Watch Ultra 2</h4>
+                        <div class="flex items-center gap-1 text-amber-400 text-xs my-1">
+                            <i class="fa-solid fa-star"></i> <span class="text-slate-600 dark:text-slate-400 text-[11px] font-semibold">4.9</span>
+                        </div>
+                        <div class="flex items-center justify-between mt-2">
+                            <span class="font-extrabold text-sm text-slate-900 dark:text-white">Rs. 8,499</span>
+                            <button onclick="addToCart('Nova Watch Ultra 2', 8499)" class="w-8 h-8 rounded-lg bg-blue-50 dark:bg-slate-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center hover:bg-blue-600 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-slate-950 transition">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mini Card 2 -->
+                <div class="bg-white dark:bg-slate-900 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-lg transition-all flex gap-4 items-center group">
+                    <div class="w-24 h-24 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 flex-shrink-0 relative">
+                        <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?q=80&w=400&auto=format&fit=crop" 
+                             alt="Earbuds" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                        <span class="absolute top-1 left-1 bg-red-500 text-white text-[9px] font-bold px-1.5 py-0.5 rounded">-30%</span>
+                    </div>
+                    <div class="flex-grow">
+                        <span class="text-[10px] font-bold text-blue-600 dark:text-cyan-400 uppercase tracking-wider">Audio</span>
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">Nova Buds Air Pro</h4>
+                        <div class="flex items-center gap-1 text-amber-400 text-xs my-1">
+                            <i class="fa-solid fa-star"></i> <span class="text-slate-600 dark:text-slate-400 text-[11px] font-semibold">4.7</span>
+                        </div>
+                        <div class="flex items-center justify-between mt-2">
+                            <div>
+                                <span class="font-extrabold text-sm text-slate-900 dark:text-white">Rs. 4,999</span>
+                                <span class="text-[10px] text-slate-400 line-through ml-1">Rs. 6,999</span>
+                            </div>
+                            <button onclick="addToCart('Nova Buds Air Pro', 4999)" class="w-8 h-8 rounded-lg bg-blue-50 dark:bg-slate-800 text-blue-600 dark:text-cyan-400 flex items-center justify-center hover:bg-blue-600 hover:text-white dark:hover:bg-cyan-500 dark:hover:text-slate-950 transition">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Banner Promotion Box -->
+                <div class="p-5 rounded-2xl bg-gradient-to-br from-blue-600 via-indigo-600 to-cyan-600 text-white shadow-xl relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-white/10 blur-xl"></div>
+                    <span class="text-xs uppercase font-extrabold tracking-widest text-cyan-200">Mirza Tech Membership</span>
+                    <h4 class="text-lg font-black mt-1 leading-snug">Get Extra 10% OFF On First Order</h4>
+                    <p class="text-xs text-blue-100 mt-2 opacity-90">Use Promo Code <strong class="underline font-mono">MIRZATECH10</strong> at checkout.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Shopping Cart Slide-over / Modal -->
+    <div id="cartModal" class="fixed inset-0 z-50 hidden bg-slate-950/60 backdrop-blur-sm transition-opacity">
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col">
+                <!-- Modal Header -->
+                <div class="p-5 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+                    <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-cart-shopping text-blue-600 dark:text-cyan-400"></i> Your Shopping Cart
+                    </h3>
+                    <button onclick="closeCartModal()" class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 rounded-lg">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Modal Body (Cart Items) -->
+                <div id="cartItemsContainer" class="p-5 flex-1 overflow-y-auto space-y-4">
+                    <div id="emptyCartMsg" class="text-center py-12 text-slate-400">
+                        <i class="fa-solid fa-basket-shopping text-4xl mb-3 opacity-40"></i>
+                        <p class="text-sm">Your cart is currently empty.</p>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="p-5 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-3">
+                    <div class="flex justify-between text-sm font-semibold text-slate-700 dark:text-slate-300">
+                        <span>Subtotal:</span>
+                        <span id="cartSubtotal" class="font-extrabold text-blue-600 dark:text-cyan-400">Rs. 0</span>
+                    </div>
+                    <p class="text-[11px] text-slate-400">Taxes and shipping calculated at checkout.</p>
+                    <button onclick="checkoutAlert()" class="w-full py-3 bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold text-sm rounded-xl shadow-lg hover:from-blue-700 hover:to-cyan-600 transition">
+                        Proceed to Checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Box -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 border border-slate-700 dark:border-slate-300">
+        <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400 dark:text-emerald-600 text-lg"></i>
+        <span id="toastMsg" class="text-xs font-semibold">Product added to cart!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-16 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-6 text-center text-xs text-slate-500 dark:text-slate-400">
+        <p>© 2026 Mirza Tech Nova. All rights reserved. Designed for cutting-edge gadgets & high performance.</p>
+    </footer>
+
+    <script>
+        // State variables
+        let baseUnitPrice = 14999;
+        let originalUnitPrice = 19999;
+        let currentQty = 1;
+        let cart = [];
+
+        // Dark / Light Theme Toggle Functionality
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                icon.className = 'fa-solid fa-moon text-lg';
+            } else {
+                html.classList.add('dark');
+                icon.className = 'fa-solid fa-sun text-lg text-amber-400';
+            }
+        }
+
+        // Thumbnail Image Selector
+        function changeImage(element, src) {
+            document.getElementById('mainProductImage').src = src;
+            
+            // Highlight active thumbnail border
+            const thumbs = document.querySelectorAll('.thumb-btn');
+            thumbs.forEach(t => {
+                t.classList.remove('border-blue-600');
+                t.classList.add('border-transparent');
+            });
+            element.classList.remove('border-transparent');
+            element.classList.add('border-blue-600');
+        }
+
+        // Color Variant Selector
+        function selectColor(element, colorName, imageSrc) {
+            document.getElementById('colorName').innerText = colorName;
+            
+            // Switch main image based on color
+            if (imageSrc) {
+                document.getElementById('mainProductImage').src = imageSrc;
+            }
+
+            // Update color button ring active styles
+            const colorBtns = document.querySelectorAll('.color-btn');
+            colorBtns.forEach(btn => {
+                btn.classList.remove('ring-2', 'ring-blue-600/30', 'border-blue-600');
+                btn.classList.add('border-transparent');
+            });
+            element.classList.add('border-blue-600', 'ring-2', 'ring-blue-600/30');
+            element.classList.remove('border-transparent');
+
+            showToast(`Selected color: ${colorName}`);
+        }
+
+        // Quantity Increment / Decrement
+        function updateQty(change) {
+            currentQty += change;
+            if (currentQty < 1) currentQty = 1;
+            
+            document.getElementById('qtyVal').innerText = currentQty;
+            
+            // Update pricing
+            const total = baseUnitPrice * currentQty;
+            document.getElementById('totalItemPrice').innerText = 'Rs. ' + total.toLocaleString();
+        }
+
+        // Wishlist Toggle
+        function toggleWishlist(btn) {
+            const icon = btn.querySelector('i');
+            if (icon.classList.contains('text-red-500')) {
+                icon.classList.remove('text-red-500');
+                icon.classList.add('text-slate-400');
+                showToast('Removed from Wishlist', 'info');
+            } else {
+                icon.classList.add('text-red-500');
+                icon.classList.remove('text-slate-400');
+                showToast('Added to Wishlist!', 'heart');
+            }
+        }
+
+        // Shopping Cart Logic
+        function addToCart(title, price) {
+            const qtyToAdd = (title === 'Nova Sound X1 Pro') ? currentQty : 1;
+            
+            const existingItem = cart.find(item => item.title === title);
+            if (existingItem) {
+                existingItem.qty += qtyToAdd;
+            } else {
+                cart.push({ title, price, qty: qtyToAdd });
+            }
+
+            updateCartUI();
+            showToast(`${title} added to cart!`);
+        }
+
+        function quickBuy(title, price) {
+            addToCart(title, price);
+            openCartModal();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cartItemsContainer');
+            const badge = document.getElementById('cartBadge');
+            const subtotalEl = document.getElementById('cartSubtotal');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            badge.innerText = totalItems;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div id="emptyCartMsg" class="text-center py-12 text-slate-400">
+                        <i class="fa-solid fa-basket-shopping text-4xl mb-3 opacity-40"></i>
+                        <p class="text-sm">Your cart is currently empty.</p>
+                    </div>`;
+                subtotalEl.innerText = 'Rs. 0';
+                return;
+            }
+
+            let html = '';
+            let subtotal = 0;
+
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.qty;
+                subtotal += itemTotal;
+                html += `
+                    <div class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700">
+                        <div>
+                            <h4 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-100">${item.title}</h4>
+                            <span class="text-xs text-slate-400">Rs. ${item.price.toLocaleString()} x ${item.qty}</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="font-extrabold text-xs sm:text-sm text-blue-600 dark:text-cyan-400">Rs. ${itemTotal.toLocaleString()}</span>
+                            <button onclick="removeFromCart(${index})" class="text-slate-400 hover:text-red-500 transition">
+                                <i class="fa-solid fa-trash text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            subtotalEl.innerText = 'Rs. ' + subtotal.toLocaleString();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+            showToast('Item removed from cart', 'info');
+        }
+
+        function openCartModal() {
+            document.getElementById('cartModal').classList.remove('hidden');
+        }
+
+        function closeCartModal() {
+            document.getElementById('cartModal').classList.add('hidden');
+        }
+
+        function checkoutAlert() {
+            if (cart.length === 0) {
+                showToast('Your cart is empty!', 'error');
+                return;
+            }
+            showToast('Redirecting to secure checkout...', 'success');
+        }
+
+        // Notification Toast Handler
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const msgEl = document.getElementById('toastMsg');
+            const icon = document.getElementById('toastIcon');
+
+            msgEl.innerText = message;
+            
+            if (type === 'heart') {
+                icon.className = 'fa-solid fa-heart text-red-500 text-lg';
+            } else if (type === 'error') {
+                icon.className = 'fa-solid fa-circle-exclamation text-amber-500 text-lg';
+            } else if (type === 'info') {
+                icon.className = 'fa-solid fa-circle-info text-blue-400 text-lg';
+            } else {
+                icon.className = 'fa-solid fa-circle-check text-emerald-400 text-lg';
+            }
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Initialize Page
+        window.onload = function() {
+            // Enable dark mode by default for modern dark aesthetic
+            document.documentElement.classList.add('dark');
+            document.getElementById('themeIcon').className = 'fa-solid fa-sun text-lg text-amber-400';
+        }
+    </script>
+</body>
+</html>
